@@ -17,6 +17,16 @@ docker run -d \
 dvol init names
 ```
 
+## create psql container
+
+```
+docker rm -f psql
+docker run -d -P \
+    --name psql \
+    -v names:/var/lib/postgresql/data \
+    --volume-driver=dvol \
+    postgres:9.4.4
+```
 ## init db
 
 ```
