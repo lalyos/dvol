@@ -37,7 +37,7 @@ def copyTo(fromPath, toPath):
             "Cannot copy %(fromPath)s to %(toPath)s because it exists" %
             dict(toPath=toPath.path, fromPath=fromPath.path))
     subprocess.check_call(["cp", "-a", fromPath.path, toPath.path])
-    os.chmod(toPath.path, 0777) # TODO add tests
+    os.chmod(toPath.path, 0700) # TODO add tests
 
 class VolumeAlreadyExists(Exception):
     pass
@@ -180,7 +180,7 @@ class Voluminous(object):
         # those processes. In the future, it might be better to have options
         # for which uid, gid and perms the volume should have. This is
         # effectively the same as `chmod a=rwx branchDir.path`.
-        os.chmod(branchDir.path, 0777)
+        os.chmod(branchDir.path, 0700)
         self.output("Created branch %s/%s" % (volume, branch))
 
     def createVolume(self, name):
