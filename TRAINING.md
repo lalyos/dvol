@@ -31,7 +31,7 @@ docker run -d -P \
 
 ```
 docker exec -it psql psql -U postgres -tc "create table names (name varchar(20));"
-add (){ NAME=${1:? reguired name};docker exec -it psql psql -U postgres -c "insert into names values ('$NAME');" }
+add (){ NAME=${1:? reguired name};docker exec -it psql psql -U postgres -c "insert into names values ('$NAME');" ; }
 alias all='docker exec -it psql psql -U postgres -tc "select * from names;"'
 add odon
 add bela
